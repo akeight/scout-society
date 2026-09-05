@@ -12,18 +12,22 @@ type State = {
   reactions: Reaction[];
   matchResult: MatchResult | null;
   likedPersonIds: string[];
+  savedMajorIds: string[];
 };
 
 type Action =
   | { type: 'setReaction'; reaction: Reaction }
   | { type: 'setMatchResult'; matchResult: MatchResult }
   | { type: 'toggleLiked'; personId: string }
+  | { type: 'setPersonLiked'; personId: string; liked: boolean }
+  | { type: 'saveMajor'; majorId: string }
   | { type: 'reset' };
 
 const initialState: State = {
   reactions: [],
   matchResult: null,
   likedPersonIds: [],
+  savedMajorIds: [],
 };
 
 function reducer(state: State, action: Action): State {
@@ -43,6 +47,22 @@ function reducer(state: State, action: Action): State {
         : [...state.likedPersonIds, action.personId];
       return { ...state, likedPersonIds: liked };
     }
+    case 'setPersonLiked': {
+      const already = state.likedPersonIds.includes(action.personId);
+      if (action.liked) {
+        if (already) return state;
+        return { ...state, likedPersonIds: [...state.likedPersonIds, action.personId] };
+      }
+      if (!already) return state;
+      return {
+        ...state,
+        likedPersonIds: state.likedPersonIds.filter((id) => id !== action.personId),
+      };
+    }
+    case 'saveMajor': {
+      if (state.savedMajorIds.includes(action.majorId)) return state;
+      return { ...state, savedMajorIds: [...state.savedMajorIds, action.majorId] };
+    }
     case 'reset':
       return initialState;
     default:
@@ -54,7 +74,10 @@ type AppStateValue = State & {
   setReaction: (reaction: Reaction) => void;
   setMatchResult: (matchResult: MatchResult) => void;
   toggleLiked: (personId: string) => void;
+  setPersonLiked: (personId: string, liked: boolean) => void;
   isLiked: (personId: string) => boolean;
+  saveMajor: (majorId: string) => void;
+  isMajorSaved: (majorId: string) => boolean;
   reset: () => void;
 };
 
@@ -69,7 +92,11 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setReaction: (reaction) => dispatch({ type: 'setReaction', reaction }),
       setMatchResult: (matchResult) => dispatch({ type: 'setMatchResult', matchResult }),
       toggleLiked: (personId) => dispatch({ type: 'toggleLiked', personId }),
+      setPersonLiked: (personId, liked) =>
+        dispatch({ type: 'setPersonLiked', personId, liked }),
       isLiked: (personId) => state.likedPersonIds.includes(personId),
+      saveMajor: (majorId) => dispatch({ type: 'saveMajor', majorId }),
+      isMajorSaved: (majorId) => state.savedMajorIds.includes(majorId),
       reset: () => dispatch({ type: 'reset' }),
     }),
     [state],

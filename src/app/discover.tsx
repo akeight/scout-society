@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 import { PersonFeatureCard, PersonRow } from '@/components/discover/person-card';
+import { BottomNav } from '@/components/navigation/bottom-nav';
 import { ThemedText } from '@/components/themed-text';
 import { Divider } from '@/components/ui/divider';
 import { Screen } from '@/components/ui/screen';
@@ -37,7 +38,7 @@ export default function DiscoverScreen() {
   }, [topCards]);
 
   return (
-    <Screen scroll contentStyle={styles.content}>
+    <Screen scroll contentStyle={styles.content} footer={<BottomNav active="discover" />}>
       <Animated.View entering={FadeIn.duration(Motion.slow)} style={styles.header}>
         <ThemedText type="eyebrow" themeColor="accentInk">
           Discover

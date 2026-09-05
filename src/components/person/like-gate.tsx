@@ -10,7 +10,7 @@ import { playSfx } from '@/lib/sfx';
 import type { Person } from '@/lib/types';
 
 export function LikeGate({ person }: { person: Person }) {
-  const { toggleLiked } = useAppState();
+  const { setPersonLiked } = useAppState();
   const firstName = person.name.split(' ')[0];
 
   return (
@@ -21,7 +21,14 @@ export function LikeGate({ person }: { person: Person }) {
 
       <View style={styles.actions}>
         <View style={styles.action}>
-          <Button label="Not for me" variant="secondary" onPress={() => router.back()} />
+          <Button
+            label="Not for me"
+            variant="secondary"
+            onPress={() => {
+              setPersonLiked(person.id, false);
+              router.dismissTo('/discover');
+            }}
+          />
         </View>
         <View style={styles.action}>
           <Button
@@ -29,7 +36,7 @@ export function LikeGate({ person }: { person: Person }) {
             variant="primary"
             onPress={() => {
               playSfx('like');
-              toggleLiked(person.id);
+              setPersonLiked(person.id, true);
               router.replace({ pathname: '/pathways', params: { personId: person.id } });
             }}
           />

@@ -1,12 +1,16 @@
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { Radius, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
+import { useAppState } from '@/lib/app-state';
 import type { Major } from '@/lib/types';
 
 function MajorCard({ major }: { major: Major }) {
   const theme = useTheme();
+  const { saveMajor, isMajorSaved } = useAppState();
+  const saved = isMajorSaved(major.id);
+
   return (
     <View style={[styles.card, { backgroundColor: theme.surface, borderColor: theme.divider }]}>
       <ThemedText type="title">{major.name}</ThemedText>
@@ -16,6 +20,18 @@ function MajorCard({ major }: { major: Major }) {
       <ThemedText type="body" themeColor="textSecondary" style={styles.reason}>
         {major.reason}
       </ThemedText>
+
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ disabled: saved, selected: saved }}
+        disabled={saved}
+        hitSlop={8}
+        onPress={() => saveMajor(major.id)}
+        style={[styles.save, { borderTopColor: theme.divider }]}>
+        <ThemedText type="eyebrow" themeColor={saved ? 'textMuted' : 'accentInk'}>
+          {saved ? 'Saved \u2713' : '+ Shortlist'}
+        </ThemedText>
+      </Pressable>
     </View>
   );
 }
@@ -105,6 +121,12 @@ const styles = StyleSheet.create({
   },
   reason: {
     marginTop: Spacing.one,
+  },
+  save: {
+    marginTop: Spacing.three,
+    paddingTop: Spacing.three,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    alignSelf: 'flex-start',
   },
   destination: {
     flex: 1,

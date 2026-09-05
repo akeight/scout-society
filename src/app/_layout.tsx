@@ -21,6 +21,7 @@ export default function RootLayout() {
           <Stack.Screen name="index" />
           <Stack.Screen name="calibration" />
           <Stack.Screen name="discover" />
+          <Stack.Screen name="shortlist" />
           <Stack.Screen name="person/[id]" />
           <Stack.Screen name="pathways" />
         </Stack>
