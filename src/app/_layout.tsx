@@ -1,13 +1,19 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { AnimatedSplash } from '@/components/animated-splash';
 import { Colors } from '@/constants/theme';
 import { AppStateProvider } from '@/lib/app-state';
+import { preloadSfx } from '@/lib/sfx';
 
 export default function RootLayout() {
   const background = Colors.light.background;
+
+  useEffect(() => {
+    preloadSfx();
+  }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: background }}>
