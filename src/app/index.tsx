@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
+import { SplashArt } from '@/components/splash-art';
 import { ThemedText } from '@/components/themed-text';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
@@ -11,6 +12,7 @@ export default function IntroScreen() {
   return (
     <Screen
       contentStyle={styles.content}
+      backdrop={<SplashArt opacity={0.14} />}
       footer={
         <Animated.View entering={FadeInDown.duration(Motion.slow).delay(Motion.stagger * 5)}>
           <Button label="Start exploring" onPress={() => router.push('/calibration')} />

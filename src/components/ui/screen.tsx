@@ -15,9 +15,18 @@ type ScreenProps = {
   contentStyle?: ViewStyle;
   /** Remove default horizontal padding (for edge-to-edge media). */
   edgeToEdge?: boolean;
+  /** Full-bleed element rendered behind the content (e.g. a faint image). */
+  backdrop?: ReactNode;
 };
 
-export function Screen({ children, scroll, footer, contentStyle, edgeToEdge }: ScreenProps) {
+export function Screen({
+  children,
+  scroll,
+  footer,
+  contentStyle,
+  edgeToEdge,
+  backdrop,
+}: ScreenProps) {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
 
@@ -32,6 +41,7 @@ export function Screen({ children, scroll, footer, contentStyle, edgeToEdge }: S
 
   return (
     <View style={[styles.root, { backgroundColor: theme.background }]}>
+      {backdrop}
       {scroll ? (
         <ScrollView
           style={styles.flex}

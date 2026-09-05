@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { AnimatedSplash } from '@/components/animated-splash';
 import { Colors } from '@/constants/theme';
 import { AppStateProvider } from '@/lib/app-state';
 
@@ -23,6 +24,7 @@ export default function RootLayout() {
           <Stack.Screen name="person/[id]" />
           <Stack.Screen name="pathways" />
         </Stack>
+        <AnimatedSplash />
       </AppStateProvider>
     </GestureHandlerRootView>
   );
