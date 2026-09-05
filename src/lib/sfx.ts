@@ -1,10 +1,11 @@
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
 
-type Sfx = 'swipe' | 'like';
+type Sfx = 'swipe' | 'like' | 'click';
 
 const SOURCES: Record<Sfx, number> = {
   swipe: require('@/assets/audio/swipe.wav'),
   like: require('@/assets/audio/like.wav'),
+  click: require('@/assets/audio/click.wav'),
 };
 
 const players: Partial<Record<Sfx, AudioPlayer>> = {};

@@ -7,6 +7,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { Motion, Spacing } from '@/constants/theme';
+import { playSfx } from '@/lib/sfx';
 
 export default function IntroScreen() {
   return (
@@ -15,7 +16,13 @@ export default function IntroScreen() {
       backdrop={<SplashArt opacity={0.14} />}
       footer={
         <Animated.View entering={FadeInDown.duration(Motion.slow).delay(Motion.stagger * 5)}>
-          <Button label="Start exploring" onPress={() => router.push('/calibration')} />
+          <Button
+            label="Start exploring"
+            onPress={() => {
+              playSfx('click');
+              router.push('/calibration');
+            }}
+          />
         </Animated.View>
       }>
       <Animated.View entering={FadeIn.duration(Motion.slow)}>

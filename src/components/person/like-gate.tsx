@@ -25,6 +25,7 @@ export function LikeGate({ person }: { person: Person }) {
             label="Not for me"
             variant="secondary"
             onPress={() => {
+              playSfx('click');
               setPersonLiked(person.id, false);
               router.dismissTo('/discover');
             }}

@@ -10,6 +10,7 @@ import { Tag, TagRow } from '@/components/ui/tag';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { Motion, Spacing } from '@/constants/theme';
+import { playSfx } from '@/lib/sfx';
 import { getMajor } from '@/data/majors';
 import { getPerson } from '@/data/people';
 import type { Major } from '@/lib/types';
@@ -37,7 +38,13 @@ export default function PathwaysScreen() {
       scroll
       contentStyle={styles.content}
       footer={
-        <Button label="Continue scouting" onPress={() => router.dismissTo('/discover')} />
+        <Button
+          label="Continue scouting"
+          onPress={() => {
+            playSfx('click');
+            router.dismissTo('/discover');
+          }}
+        />
       }>
       <Animated.View entering={FadeIn.duration(Motion.slow)} style={styles.header}>
         <ThemedText type="eyebrow" themeColor="accentInk">
