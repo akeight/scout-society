@@ -50,7 +50,7 @@ export default function PathwaysScreen() {
         <ThemedText type="eyebrow" themeColor="accentInk">
           Pathways
         </ThemedText>
-        <ThemedText type="display">You liked {firstName}&rsquo;s world.</ThemedText>
+        <ThemedText type="display">You liked the work. Now look at the paths.</ThemedText>
         <ThemedText type="body" themeColor="textSecondary" style={styles.intro}>
           {firstName} studied {person.studied}. That&rsquo;s one path &mdash; not the only one.
         </ThemedText>

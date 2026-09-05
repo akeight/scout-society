@@ -64,7 +64,7 @@ export default function DiscoverScreen() {
           Explore
         </ThemedText>
         <ThemedText type="body" themeColor="textSecondary">
-          A starting point, not a box.
+          There&rsquo;s more out there.
         </ThemedText>
       </View>
 

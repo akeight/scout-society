@@ -113,6 +113,48 @@ export const majors: Major[] = [
     pillars: ['Behavior', 'Research', 'Perception', 'Motivation'],
     reason: 'Why people notice, trust, and choose the things they do.',
   },
+  {
+    id: 'physics',
+    name: 'Physics',
+    pillars: ['Mechanics', 'Forces', 'Math', 'Experiment'],
+    reason: 'The fundamental rules that every physical design has to obey.',
+  },
+  {
+    id: 'manufacturing-engineering',
+    name: 'Manufacturing Engineering',
+    pillars: ['Processes', 'Tolerances', 'Materials', 'Production'],
+    reason: 'How a designed part actually gets made at real-world scale.',
+  },
+  {
+    id: 'industrial-engineering',
+    name: 'Industrial Engineering',
+    pillars: ['Systems', 'Optimization', 'Process', 'Efficiency'],
+    reason: 'Making the whole system of people, machines, and parts run better.',
+  },
+  {
+    id: 'health-sciences',
+    name: 'Health Sciences',
+    pillars: ['Anatomy', 'Clinical care', 'Physiology', 'Wellness'],
+    reason: 'A broad clinical foundation for hands-on work with patients.',
+  },
+  {
+    id: 'accounting',
+    name: 'Accounting',
+    pillars: ['Reporting', 'Analysis', 'Controls', 'Standards'],
+    reason: 'The precise language that every financial story is written in.',
+  },
+  {
+    id: 'business-analytics',
+    name: 'Business Analytics',
+    pillars: ['Data', 'Modeling', 'Forecasting', 'Decisions'],
+    reason: 'Turning business data into forecasts and clear recommendations.',
+  },
+  {
+    id: 'advertising',
+    name: 'Advertising',
+    pillars: ['Creative', 'Audience', 'Campaigns', 'Persuasion'],
+    reason: 'Shaping how a message actually lands with the people it targets.',
+  },
 ];
 
 export function getMajor(id: string): Major | undefined {

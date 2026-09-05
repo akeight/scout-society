@@ -1,56 +1,164 @@
-# Welcome to your Expo app 👋
+# Scout Society
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Scout Society is a React Native + Expo prototype designed for an 18-year-old college freshman who is two months away from starting school and unsure what major to choose.
 
-## Get started
+The core idea is:
 
-1. Install dependencies
+> Don’t choose the major first. Experience the work first.
 
-   ```bash
-   npm install
-   ```
+Scout Society helps students understand the kinds of working lives different majors can lead toward before asking them to make a high-stakes academic decision.
 
-2. Start the app
+## Why This Product
 
-   ```bash
-   npx expo start
-   ```
+Scout Society started from a simple observation:
 
-In the output, you'll find options to open the app in a
+When students are choosing a major, the most useful information is not always the course list.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+One of the most valuable experiences I had as a college student was networking, talking with people in different fields, and asking what their actual day-to-day work looked like.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+That gave me something a major description could not:
 
-## Get a fresh project
+- what the work felt like
+- what people actually did all day
+- what surprised them about the role
+- what parts of the job they liked or disliked
+- what paths had led them there
 
-When you're ready, run:
+That kind of exposure helped me think more clearly about what I wanted to study because I was no longer choosing only from academic labels. I was choosing with a better understanding of the kinds of working lives those paths could lead toward.
+
+In conversations with other students, I found that this kind of real-world exposure and networking was consistently one of the most helpful ways to make career and major decisions.
+
+That became the product insight behind Scout Society.
+
+## Problem Statement
+
+An 18-year-old freshman, two months before classes begin, may be asked to choose a major before they have enough exposure to understand what different careers actually feel like.
+
+Traditional major-selection tools often start with:
+
+- course catalogs
+- aptitude quizzes
+- personality questions
+- career lists
+
+Those approaches can be useful, but they still ask students to make decisions about work they may never have experienced.
+
+The deeper problem is:
+
+> How can a student choose what to study if they do not yet understand what the work on the other side might actually look like?
+
+Scout Society addresses that by reversing the usual flow.
+
+Instead of:
+
+**Major → career**
+
+Scout Society begins with:
+
+**Work experience → people → reflection → possible majors**
+
+## Why This Approach
+
+The goal is not to tell a student:
+
+> You should major in Computer Science.
+
+The goal is to help them gather better evidence.
+
+Scout Society lets students:
+
+1. React to concrete work situations.
+2. Discover people whose working lives may align with those reactions.
+3. See what those jobs actually look and feel like.
+4. Decide whether that kind of work still feels interesting.
+5. Explore multiple majors that could lead toward similar work.
+
+The recommendation is intentionally a starting point, not an answer.
+
+This approach was chosen over a traditional major quiz because it is grounded in exposure rather than self-labeling.
+
+A student may not know whether they are “analytical,” “creative,” or “people-oriented.”
+
+They can usually react more meaningfully to:
+
+> Would I want to spend three hours figuring out why one number does not make sense?
+
+or:
+
+> Would I enjoy helping someone make visible progress over several weeks?
+
+That is the product strategy behind Scout Society:
+
+> Don’t choose the major first. Experience the work first.
+
+## Product Flow
+
+1. **Calibrate**
+   - React to six concrete work situations.
+   - These are preference signals, not personality labels.
+
+2. **Discover**
+   - See three people whose working lives may be worth exploring.
+   - Browse additional profiles outside the recommendations.
+
+3. **Experience**
+   - Open a professional profile and understand what their work actually feels like.
+   - Maya, a Product Engineer, includes a deeper interactive “Tuesday” experience.
+
+4. **React**
+   - Mark a working life as “I’m into this” or “Not for me.”
+
+5. **Explore Pathways**
+   - See multiple majors that could lead toward similar kinds of work.
+   - The product avoids treating any career as having one required major.
+
+6. **Shortlist**
+   - Save working lives and majors worth exploring further.
+
+## Product Principle
+
+A major is not a destination.
+
+It is one possible path toward work you might want.
+
+Scout Society is designed to help students build better evidence about themselves before making a high-stakes academic decision.
+
+## Tech Stack
+
+- React Native
+- Expo
+- TypeScript
+- Expo Router
+- React Native Reanimated
+- Expo Image
+- Local static data
+- Local React state
+
+This prototype intentionally avoids unnecessary production infrastructure such as authentication, databases, or a backend.
+
+## Design Direction
+
+Scout Society uses an editorial, human, premium visual language rather than a traditional education-dashboard aesthetic.
+
+Brand palette:
+
+- `#EEEFE9` — warm off-white
+- `#D1BD91` — muted sand / gold
+- `#262626` — near-black
+
+The interface emphasizes:
+
+- strong typography
+- generous spacing
+- editorial photography
+- restrained motion
+- minimal UI chrome
+- warm, tactile visual details
+
+## Running Locally
+
+Install dependencies:
 
 ```bash
-npm run reset-project
+npm install
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

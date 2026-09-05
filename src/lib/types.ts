@@ -40,9 +40,15 @@ export type Person = {
   characteristics: string[];
   signals: Signal[];
   relatedMajorIds: string[];
-  /** A few concrete beats from a real day. */
-  daySnapshot: string[];
+  /** A few concrete, time-stamped beats from a typical afternoon. */
+  daySnapshot: DayMoment[];
   image: ImageSourcePropType;
+};
+
+/** One time-stamped beat from a person's typical afternoon. */
+export type DayMoment = {
+  time: string;
+  note: string;
 };
 
 /** One interactive moment in Maya's Tuesday. */

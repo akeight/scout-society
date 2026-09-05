@@ -18,7 +18,6 @@ type State = {
 type Action =
   | { type: 'setReaction'; reaction: Reaction }
   | { type: 'setMatchResult'; matchResult: MatchResult }
-  | { type: 'toggleLiked'; personId: string }
   | { type: 'setPersonLiked'; personId: string; liked: boolean }
   | { type: 'saveMajor'; majorId: string }
   | { type: 'reset' };
@@ -41,12 +40,6 @@ function reducer(state: State, action: Action): State {
     }
     case 'setMatchResult':
       return { ...state, matchResult: action.matchResult };
-    case 'toggleLiked': {
-      const liked = state.likedPersonIds.includes(action.personId)
-        ? state.likedPersonIds.filter((id) => id !== action.personId)
-        : [...state.likedPersonIds, action.personId];
-      return { ...state, likedPersonIds: liked };
-    }
     case 'setPersonLiked': {
       const already = state.likedPersonIds.includes(action.personId);
       if (action.liked) {
@@ -73,7 +66,6 @@ function reducer(state: State, action: Action): State {
 type AppStateValue = State & {
   setReaction: (reaction: Reaction) => void;
   setMatchResult: (matchResult: MatchResult) => void;
-  toggleLiked: (personId: string) => void;
   setPersonLiked: (personId: string, liked: boolean) => void;
   isLiked: (personId: string) => boolean;
   saveMajor: (majorId: string) => void;
@@ -91,7 +83,6 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       ...state,
       setReaction: (reaction) => dispatch({ type: 'setReaction', reaction }),
       setMatchResult: (matchResult) => dispatch({ type: 'setMatchResult', matchResult }),
-      toggleLiked: (personId) => dispatch({ type: 'toggleLiked', personId }),
       setPersonLiked: (personId, liked) =>
         dispatch({ type: 'setPersonLiked', personId, liked }),
       isLiked: (personId) => state.likedPersonIds.includes(personId),

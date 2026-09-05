@@ -31,7 +31,6 @@ export default function PersonScreen() {
   }
 
   const isHero = person.id === HERO_PERSON_ID;
-  const firstName = person.name.split(' ')[0];
 
   return (
     <Screen scroll contentStyle={styles.content}>
@@ -64,7 +63,7 @@ export default function PersonScreen() {
           <View style={styles.deeper}>
             <ThemedText type="headline">See what my Tuesday looks like.</ThemedText>
             <ThemedText type="body" themeColor="textSecondary">
-              Three moments from one real day. Make the call Maya would face.
+              Three moments from a normal workday. See what pulls you in.
             </ThemedText>
             <Button label="Step into Maya's Tuesday" onPress={() => setTuesday('running')} />
           </View>
@@ -76,13 +75,7 @@ export default function PersonScreen() {
           <LikeGate person={person} />
         )
       ) : (
-        <View style={styles.deeper}>
-          <ThemedText type="body" themeColor="textSecondary">
-            {firstName}&rsquo;s deep dive is coming soon &mdash; but you&rsquo;ve seen enough to
-            react.
-          </ThemedText>
-          <LikeGate person={person} />
-        </View>
+        <LikeGate person={person} />
       )}
     </Screen>
   );

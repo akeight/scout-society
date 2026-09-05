@@ -48,7 +48,7 @@ export default function ShortlistScreen() {
           </View>
         ) : (
           <ThemedText type="body" themeColor="textSecondary">
-            Nothing here yet. React to a few lives in Discover and the ones you like will land here.
+            Nothing saved yet. Keep scouting.
           </ThemedText>
         )}
       </Section>
@@ -72,7 +72,7 @@ export default function ShortlistScreen() {
           </View>
         ) : (
           <ThemedText type="body" themeColor="textSecondary">
-            Save a major from any pathway to keep it in view.
+            Save a pathway when something feels worth a closer look.
           </ThemedText>
         )}
       </Section>

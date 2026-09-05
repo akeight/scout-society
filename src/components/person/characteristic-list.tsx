@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { Tag, TagRow } from '@/components/ui/tag';
 import { Spacing } from '@/constants/theme';
+import type { DayMoment } from '@/lib/types';
 
 type SectionProps = {
   eyebrow: string;
@@ -32,17 +33,17 @@ export function CharacteristicList({ characteristics }: { characteristics: strin
   );
 }
 
-export function DaySnapshot({ items }: { items: string[] }) {
+export function DaySnapshot({ items }: { items: DayMoment[] }) {
   return (
-    <Section eyebrow="A day, roughly">
+    <Section eyebrow="A typical afternoon">
       <View style={styles.list}>
         {items.map((item, i) => (
           <View key={i} style={styles.item}>
             <ThemedText type="body" themeColor="accentInk" style={styles.marker}>
-              {String(i + 1).padStart(2, '0')}
+              {item.time}
             </ThemedText>
             <ThemedText type="body" themeColor="textSecondary" style={styles.itemText}>
-              {item}
+              {item.note}
             </ThemedText>
           </View>
         ))}
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
   },
   marker: {
     fontWeight: '600',
+    minWidth: 64,
   },
   itemText: {
     flex: 1,
