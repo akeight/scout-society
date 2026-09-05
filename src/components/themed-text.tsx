@@ -1,73 +1,89 @@
-import { Platform, StyleSheet, Text, type TextProps } from 'react-native';
+import { StyleSheet, Text, type TextProps } from 'react-native';
 
 import { Fonts, ThemeColor } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
+export type ThemedTextType =
+  | 'display' // large editorial serif headline
+  | 'headline' // section serif headline
+  | 'title' // smaller serif title
+  | 'quote' // serif, for spoken quotes
+  | 'bodyLarge'
+  | 'body'
+  | 'eyebrow' // small, uppercase, tracked-out label
+  | 'caption';
+
 export type ThemedTextProps = TextProps & {
-  type?: 'default' | 'title' | 'small' | 'smallBold' | 'subtitle' | 'link' | 'linkPrimary' | 'code';
+  type?: ThemedTextType;
   themeColor?: ThemeColor;
 };
 
-export function ThemedText({ style, type = 'default', themeColor, ...rest }: ThemedTextProps) {
+export function ThemedText({ style, type = 'body', themeColor, ...rest }: ThemedTextProps) {
   const theme = useTheme();
+
+  const defaultColor: ThemeColor =
+    type === 'eyebrow' || type === 'caption' ? 'textSecondary' : 'text';
 
   return (
     <Text
-      style={[
-        { color: theme[themeColor ?? 'text'] },
-        type === 'default' && styles.default,
-        type === 'title' && styles.title,
-        type === 'small' && styles.small,
-        type === 'smallBold' && styles.smallBold,
-        type === 'subtitle' && styles.subtitle,
-        type === 'link' && styles.link,
-        type === 'linkPrimary' && styles.linkPrimary,
-        type === 'code' && styles.code,
-        style,
-      ]}
+      style={[{ color: theme[themeColor ?? defaultColor] }, styles[type], style]}
       {...rest}
     />
   );
 }
 
 const styles = StyleSheet.create({
-  small: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: 500,
+  display: {
+    fontFamily: Fonts.serif,
+    fontSize: 44,
+    lineHeight: 48,
+    fontWeight: '500',
+    letterSpacing: -1,
   },
-  smallBold: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: 700,
-  },
-  default: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: 500,
+  headline: {
+    fontFamily: Fonts.serif,
+    fontSize: 30,
+    lineHeight: 34,
+    fontWeight: '500',
+    letterSpacing: -0.5,
   },
   title: {
-    fontSize: 48,
-    fontWeight: 600,
-    lineHeight: 52,
+    fontFamily: Fonts.serif,
+    fontSize: 23,
+    lineHeight: 29,
+    fontWeight: '500',
+    letterSpacing: -0.2,
   },
-  subtitle: {
-    fontSize: 32,
-    lineHeight: 44,
-    fontWeight: 600,
+  quote: {
+    fontFamily: Fonts.serif,
+    fontSize: 22,
+    lineHeight: 31,
+    fontWeight: '400',
   },
-  link: {
-    lineHeight: 30,
-    fontSize: 14,
+  bodyLarge: {
+    fontFamily: Fonts.sans,
+    fontSize: 18,
+    lineHeight: 27,
+    fontWeight: '400',
   },
-  linkPrimary: {
-    lineHeight: 30,
-    fontSize: 14,
-    color: '#3c87f7',
+  body: {
+    fontFamily: Fonts.sans,
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '400',
   },
-  code: {
-    fontFamily: Fonts.mono,
-    fontWeight: Platform.select({ android: 700 }) ?? 500,
+  eyebrow: {
+    fontFamily: Fonts.sans,
     fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '600',
+    letterSpacing: 1.6,
+    textTransform: 'uppercase',
+  },
+  caption: {
+    fontFamily: Fonts.sans,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '400',
   },
 });
