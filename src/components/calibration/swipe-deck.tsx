@@ -12,6 +12,7 @@ import { SWIPE_THRESHOLD, SwipeCard } from '@/components/calibration/swipe-card'
 import { Button } from '@/components/ui/button';
 import { Motion, Spacing } from '@/constants/theme';
 import { useAppState } from '@/lib/app-state';
+import { playSfx } from '@/lib/sfx';
 import type { Reaction, Scenario } from '@/lib/types';
 
 const { width } = Dimensions.get('window');
@@ -27,6 +28,8 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
   const [index, setIndex] = useState(0);
   const translateX = useSharedValue(0);
   const collected = useRef<Reaction[]>([]);
+
+  const playSwipe = useCallback(() => playSfx('swipe'), []);
 
   const current = scenarios[index];
   const next = scenarios[index + 1];
@@ -55,6 +58,7 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
   const fling = useCallback(
     (direction: 1 | -1) => {
       const value: 'into' | 'not' = direction === 1 ? 'into' : 'not';
+      playSwipe();
       translateX.value = withTiming(
         direction * OFF_SCREEN,
         { duration: Motion.base },
@@ -63,7 +67,7 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
         },
       );
     },
-    [advance, translateX],
+    [advance, playSwipe, translateX],
   );
 
   const pan = useMemo(
@@ -79,6 +83,7 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
             translateX.value < -SWIPE_THRESHOLD || event.velocityX < -800;
 
           if (swipedRight) {
+            runOnJS(playSwipe)();
             translateX.value = withTiming(
               OFF_SCREEN,
               { duration: Motion.base },
@@ -87,6 +92,7 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
               },
             );
           } else if (swipedLeft) {
+            runOnJS(playSwipe)();
             translateX.value = withTiming(
               -OFF_SCREEN,
               { duration: Motion.base },
@@ -98,7 +104,7 @@ export function SwipeDeck({ scenarios, onComplete }: SwipeDeckProps) {
             translateX.value = withSpring(0, { damping: 18, stiffness: 180 });
           }
         }),
-    [advance, translateX],
+    [advance, playSwipe, translateX],
   );
 
   if (!current) return null;

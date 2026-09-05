@@ -6,6 +6,7 @@ import { ThemedText } from '@/components/themed-text';
 import { Button } from '@/components/ui/button';
 import { Motion, Spacing } from '@/constants/theme';
 import { useAppState } from '@/lib/app-state';
+import { playSfx } from '@/lib/sfx';
 import type { Person } from '@/lib/types';
 
 export function LikeGate({ person }: { person: Person }) {
@@ -27,6 +28,7 @@ export function LikeGate({ person }: { person: Person }) {
             label="I'm into this"
             variant="primary"
             onPress={() => {
+              playSfx('like');
               toggleLiked(person.id);
               router.replace({ pathname: '/pathways', params: { personId: person.id } });
             }}

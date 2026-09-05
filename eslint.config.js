@@ -15,6 +15,7 @@ module.exports = defineConfig([
     files: [
       "src/components/ui/button.tsx",
       "src/components/calibration/**/*.tsx",
+      "src/components/animated-splash.tsx",
     ],
     rules: {
       "react-hooks/immutability": "off",
