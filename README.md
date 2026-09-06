@@ -1,5 +1,7 @@
 # Scout Society
 
+![Scout Society — Find what's worth pursuing.](./docs/brand/banner.png)
+
 Scout Society is a React Native + Expo prototype designed for an 18-year-old college freshman who is two months away from starting school and unsure what major to choose.
 
 The core idea is:
@@ -115,6 +117,28 @@ That is the product strategy behind Scout Society:
 6. **Shortlist**
    - Save working lives and majors worth exploring further.
 
+## Screens
+
+A walkthrough of the core user flow, from intro to shortlist.
+
+<table>
+  <tr>
+    <td width="33%" valign="top"><img src="./docs/screenshots/01-intro.jpg" alt="Intro — Don't pick a major yet. Try on the work first." /><br /><sub><b>1. Intro</b> — Frame the idea: try on the work before choosing a major.</sub></td>
+    <td width="33%" valign="top"><img src="./docs/screenshots/02-calibration.png" alt="Calibration — react to a few real work situations." /><br /><sub><b>2. Calibrate</b> — React to six concrete work situations.</sub></td>
+    <td width="33%" valign="top"><img src="./docs/screenshots/03-discover.jpg" alt="Discover — three working lives worth trying on." /><br /><sub><b>3. Discover</b> — Meet people whose working lives may be worth exploring.</sub></td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top"><img src="./docs/screenshots/04-profile.jpg" alt="Profile — Maya Chen, Product Engineer." /><br /><sub><b>4. Profile</b> — Understand what the work actually feels like.</sub></td>
+    <td width="33%" valign="top"><img src="./docs/screenshots/05-experience-tuesday.png" alt="Experience — moments from Maya's Tuesday." /><br /><sub><b>5. Experience</b> — Step into Maya's Tuesday and make the calls she would face.</sub></td>
+    <td width="33%" valign="top"><img src="./docs/screenshots/06-pathways.png" alt="Pathways — you liked the work, now look at the paths." /><br /><sub><b>6. Pathways</b> — See multiple majors that could lead toward similar work.</sub></td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top"><img src="./docs/screenshots/07-shortlist.png" alt="Shortlist — things worth exploring." /><br /><sub><b>7. Shortlist</b> — Save working lives and majors worth exploring further.</sub></td>
+    <td width="33%"></td>
+    <td width="33%"></td>
+  </tr>
+</table>
+
 ## Product Principle
 
 A major is not a destination.
@@ -137,6 +161,8 @@ Scout Society is designed to help students build better evidence about themselve
 This prototype intentionally avoids unnecessary production infrastructure such as authentication, databases, or a backend.
 
 ## Design Direction
+
+![Scout Society brand board — palette, logo, and photography direction](./docs/brand/brand-board.png)
 
 Scout Society uses an editorial, human, premium visual language rather than a traditional education-dashboard aesthetic.
 
@@ -161,4 +187,9 @@ Install dependencies:
 
 ```bash
 npm install
+```
+
+```bash
+npx expo start
+i
 ```
